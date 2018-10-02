@@ -58,7 +58,7 @@ class SignInPresenterOutputMock: SignInPresenterOutput {
     }
     
     func showAlertError(error: APIError) {
-        alertToShow = error
+        alertToShow = error.message
     }
     
     func addGreenMarkToEmail() {
