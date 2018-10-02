@@ -1,9 +1,10 @@
 import XCTest
+@testable import TestableCodeExample
 
 class SigninPresenterTests: XCTestCase {
     
     let presenterOutput = SignInPresenterOutputMock()
-    let presenter: SignInPresenter!
+    var presenter: SignInPresenter!
     
     override func setUp() {
         presenter = SignInPresenter(output: presenterOutput)
@@ -14,7 +15,8 @@ class SigninPresenterTests: XCTestCase {
         presenterOutput.navigatedTo = ""
         presenter.signinSuccess(user: User())
         XCTAssertEqual(presenterOutput.navigatedTo, "Home")
-        XCTAssertEqual(Global.user, User())
+        XCTAssertNotNil(Global.user)
+        XCTAssertEqual(Global.user!.id, User().id)
     }
     
     func testSigninFail() {
@@ -57,8 +59,8 @@ class SignInPresenterOutputMock: SignInPresenterOutput {
         navigatedTo = "Home"
     }
     
-    func showAlertError(error: APIError) {
-        alertToShow = error.message
+    func showAlertError(error: String) {
+        alertToShow = error
     }
     
     func addGreenMarkToEmail() {

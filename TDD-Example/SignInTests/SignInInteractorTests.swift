@@ -1,9 +1,10 @@
 import XCTest
+@testable import TestableCodeExample
 
 class SigninInteractorTests: XCTestCase {
     
     let interactorOutput = SignInInteractorOutputMock()
-    let interactor: SignInInteractor!
+    var interactor: SignInInteractor!
     
     override func setUp() {
         interactor = SignInInteractor(output: interactorOutput)
@@ -11,13 +12,13 @@ class SigninInteractorTests: XCTestCase {
     
     func testSignInWithSuccessScenario() {
         interactorOutput.callStatus = false
-        interactor.signin(email: "EMAIL", parameters: "CORRECT_PASSWORD")
+        interactor.signin(email: "EMAIL", password: "CORRECT_PASSWORD")
         XCTAssertEqual(interactorOutput.callStatus, true)
     }
     
     func testSignInWithFailScenario() {
         interactorOutput.callStatus = false
-        interactor.signin(email: "EMAIL", parameters: "WRONG_PASSWORD")
+        interactor.signin(email: "EMAIL", password: "WRONG_PASSWORD")
         XCTAssertEqual(interactorOutput.callStatus, false)
     }
     

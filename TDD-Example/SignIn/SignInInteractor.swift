@@ -9,6 +9,6 @@ class SignInInteractor: SignInInteractorInput {
     }
     
     func signin(email: String, password: String) {}
-    func validate(email: Stringg) {}
-    func validate(password: Stringg) {}
+    func validate(email: String) {}
+    func validate(password: String) {}
 }

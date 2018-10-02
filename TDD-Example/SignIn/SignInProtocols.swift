@@ -2,14 +2,14 @@ import Foundation
 
 func configure(output: SignInOutput) -> SignInInput {
     let presenter = SignInPresenter(output: output)
-    let interactor = SignInInteractor(output: presenter, networkDelegate: network)
+    let interactor = SignInInteractor(output: presenter)
     return interactor
 }
 
 protocol SignInInput {
     func signin(email: String, password: String)
-    func validate(email: Stringg)
-    func validate(password: Stringg)
+    func validate(email: String)
+    func validate(password: String)
 }
 
 protocol SignInInteractorInput: SignInInput {}
